@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Carrousel d'images</title>
+    <style>
+        /* Style pour le conteneur du carrousel */
+        .carousel {
+            position: relative;
+            width: 500px;
+            /* Largeur du carrousel */
+            height: 300px;
+            /* Hauteur du carrousel */
+            overflow: hidden;
+            /* Cache les parties des images qui débordent */
+            margin: auto;
+            /* Centre le carrousel horizontalement */
+        }
+
+        /* Style pour les images dans le carrousel */
+        .carousel img {
+            width: 100%;
+            /* Les images prennent toute la largeur du carrousel */
+            height: 100%;
+            /* Les images prennent toute la hauteur du carrousel */
+            position: absolute;
+            /* Positionne les images absolument par rapport au conteneur */
+            top: 0;
+            /* Positionne les images en haut du conteneur */
+            left: 0;
+            /* Positionne les images à gauche du conteneur */
+            display: none;
+            /* Cache toutes les images par défaut */
+        }
+
+        /* Style pour l'image active */
+        .carousel img.active {
+            display: block;
+            /* Affiche l'image active */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Conteneur pour le carrousel d'images -->
+    <div class="carousel" id="carrousel">
+        <img class="active" src="images1.jpg" />
+        <img src="images2.png" />
+        <img src="images3.png" />
+
+    </div>
+
+    <script>
+        // Sélectionne toutes les images dans le carrousel
+        var images = document.querySelectorAll(".carousel img");
+        var index = 0; // Initialise l'index de l'image actuelle
+
+        // Définit un intervalle pour changer l'image toutes les 3 secondes
+        setInterval(function () {
+            // Cache l'image actuelle en enlevant la classe 'active'
+            images[index].classList.remove('active');
+            // Calcule l'index de la prochaine image en utilisant l'opérateur modulo pour boucler à 0 après la dernière image
+            index = (index + 1) % images.length;
+            // Affiche la nouvelle image en ajoutant la classe 'active'
+            images[index].classList.add('active');
+        }, 3000); // 3000 millisecondes = 3 secondes
+    </script>
+</body>
+
+</html>

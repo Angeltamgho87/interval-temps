@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>setInterval</title>
+</head>
+
+<body>
+    <!-- Boutons pour commencer et arrêter l'intervalle -->
+    <button onclick="commencerIntervalle()">Commencer l'intervalle</button>
+    <button onclick="arreterIntervalle()">Arrêter l'intervalle</button>
+
+    <!-- Paragraphe pour afficher l'horloge -->
+    <p id="horloge"></p>
+
+    <script>
+        // Déclaration de la variable pour stocker l'identifiant de l'intervalle
+        var intervalle;
+
+        // Fonction pour commencer l'intervalle
+        function commencerIntervalle() {
+            // Utilise setInterval pour mettre à jour l'horloge chaque seconde (1000 millisecondes)
+            intervalle = setInterval(function () {
+                // Met à jour le contenu du paragraphe avec l'heure actuelle
+                document.getElementById('horloge').innerHTML = new Date().toLocaleTimeString();
+            }, 1000);
+        }
+
+        // Fonction pour arrêter l'intervalle
+        function arreterIntervalle() {
+            // Utilise clearInterval pour arrêter l'intervalle
+            clearInterval(intervalle);
+        }
+    </script>
+</body>
+
+</html>

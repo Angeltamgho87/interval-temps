@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>setTimeout</title>
+</head>
+
+<body>
+    <!-- Bouton pour déclencher l'affichage du message après 3 secondes -->
+    <button onclick="afficherMessage()">Afficher un message après 3 secondes</button>
+
+    <script>
+        // Fonction pour afficher un message après un délai de 3 secondes
+        function afficherMessage() {
+            // Utilise setTimeout pour exécuter une fonction après 3 secondes (3000 millisecondes)
+            setTimeout(function () {
+                // Affiche une alerte avec le message
+                alert('Bonjour, après 3 secondes!');
+            }, 3000); // 3000 millisecondes = 3 secondes
+        }
+    </script>
+</body>
+
+</html>
