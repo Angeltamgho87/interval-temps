@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Carrousel d'images</title>
+    <style>
+        /* Style pour le conteneur du carrousel */
+        #carrousel {
+            position: relative;
+            width: 600px;
+            /* Largeur du carrousel */
+            height: 400px;
+            /* Hauteur du carrousel */
+            overflow: hidden;
+            /* Cache les parties des images qui débordent */
+            margin: auto;
+            /* Centre le carrousel horizontalement */
+        }
+
+        /* Style pour les images dans le carrousel */
+        #carrousel img {
+            position: absolute;
+            width: 100%;
+
+            
+            /* Maintient le ratio de l'image */
+            transition: opacity 1s ease-in-out;
+            /* Transition en fondu */
+            opacity: 0;
+            /* Cache toutes les images par défaut */
+        }
+
+        /* Style pour l'image active */
+        #carrousel img.active {
+            opacity: 1;
+            /* Affiche l'image active */
+        }
+
+        /* Style pour les boutons de navigation */
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Conteneur pour le carrousel d'images -->
+    <div id="carrousel">
+        <!-- Ajoute les images au carrousel, avec la première image affichée par défaut -->
+        <img class="active" src="images1.jpg" />
+        <img src="images2.png" />
+        <img src="images3.png" />
+        <!-- Boutons de navigation -->
+        <button class="nav-button prev" onclick="prevImage()">&#10094;</button>
+        <button class="nav-button next" onclick="nextImage()">&#10095;</button>
+    </div>
+
+    <script>
+        // Sélectionne toutes les images dans le carrousel
+        var images = document.getElementById('carrousel').getElementsByTagName('img');
+        var index = 0; // Initialise l'index de l'image actuelle
+        var interval; // Variable pour stocker l'intervalle
+
+        // Fonction pour changer d'image automatiquement toutes les 3 secondes
+        function startInterval() {
+            interval = setInterval(function () {
+                nextImage();
+            }, 3000);
+        }
+
+        // Fonction pour afficher l'image suivante
+        function nextImage() {
+            images[index].classList.remove('active');
+            index = (index + 1) % images.length;
+            images[index].classList.add('active');
+        }
+
+        // Fonction pour afficher l'image précédente
+        function prevImage() {
+            images[index].classList.remove('active');
+            index = (index - 1 + images.length) % images.length;
+            images[index].classList.add('active');
+        }
+
+        // Démarre le changement d'images automatique au chargement de la page
+        window.onload = startInterval;
+    </script>
+</body>
+
+</html>
